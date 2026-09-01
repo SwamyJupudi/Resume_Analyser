@@ -31,8 +31,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
 
-        System.out.println("AUTH HEADER: " + authHeader);
-
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
 
             System.out.println("NO TOKEN FOUND");
@@ -44,17 +42,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = authHeader.substring(7);
 
         System.out.println("TOKEN FOUND");
-        System.out.println(
-                "TOKEN VALID: " + jwtService.isTokenValid(token)
-        );
 
-        if (jwtService.isTokenValid(token)) {
+        boolean valid = jwtService.isTokenValid(token);
+
+        System.out.println("TOKEN VALID: " + valid);
+
+        if (valid) {
 
             String email = jwtService.extractEmail(token);
 
-            System.out.println(
-                    "EMAIL FROM TOKEN: " + email
-            );
+            System.out.println("EMAIL FROM TOKEN: " + email);
 
             UsernamePasswordAuthenticationToken authentication =
                     new UsernamePasswordAuthenticationToken(

@@ -26,14 +26,10 @@ public class ResumeController {
     }
 
     @PostMapping("/upload")
-    public String uploadResume(@RequestParam("file") MultipartFile file) {
+    public String uploadResume(
+            @RequestParam("file") MultipartFile file) throws Exception {
 
-        try {
-            return resumeService.extractText(file);
-
-        } catch (Exception e) {
-            return "Error: " + e.getMessage();
-        }
+        return resumeService.extractText(file);
     }
 
     @PostMapping("/analyze")

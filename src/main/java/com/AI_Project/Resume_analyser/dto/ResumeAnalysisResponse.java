@@ -1,6 +1,7 @@
 package com.AI_Project.Resume_analyser.dto;
 
 import java.util.List;
+import com.AI_Project.Resume_analyser.dto.AIAnalysisResponse;
 
 public class ResumeAnalysisResponse {
 
@@ -14,6 +15,16 @@ public class ResumeAnalysisResponse {
     private List<String> suggestions;
 
     private double matchScore;
+
+    private AIAnalysisResponse aiAnalysis;
+
+    public AIAnalysisResponse getAiAnalysis() {
+        return aiAnalysis;
+    }
+
+    public void setAiAnalysis(AIAnalysisResponse aiAnalysis) {
+        this.aiAnalysis = aiAnalysis;
+    }
 
     public void setMatchScore(double matchScore) {
         this.matchScore = matchScore;
