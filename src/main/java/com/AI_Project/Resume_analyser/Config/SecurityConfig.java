@@ -3,6 +3,7 @@ package com.AI_Project.Resume_analyser.Config;
 import com.AI_Project.Resume_analyser.Security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -25,6 +26,8 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
 
+                .cors(cors -> {})
+
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS
@@ -32,10 +35,14 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests(auth -> auth
+
+                        // Allow CORS preflight requests
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                        // Public authentication endpoints
                         .requestMatchers(
                                 "/api/auth/register",
-                                "/api/auth/login",
-                                "/api/guest"
+                                "/api/auth/login"
                         ).permitAll()
 
                         .anyRequest().authenticated()
