@@ -5,6 +5,7 @@ import { ScoreRing } from "../components/ui/ScoreRing";
 import { PublicNavbar } from "../components/home/PublicNavbar";
 import { PublicFooter } from "../components/home/Footer";
 import { HeroIllustration } from "../components/home/HeroIllustration";
+import matchScoreHelpIllustration from "../assets/illustrations/match-score-help-illustration.png";
 import {
   IconUpload,
   IconBriefcase,
@@ -252,6 +253,13 @@ export default function HomePage() {
               score you'll see for your own analysis, calculated from your own
               resume and job description.
             </p>
+          </div>
+          <div className="score-section-illustration">
+            <img
+              src={matchScoreHelpIllustration}
+              alt="A person looking overwhelmed by resume questions while the FitLens AI assistant offers to analyse their resume, match it to roles, and give personalised suggestions"
+              className="score-section-illustration-img"
+            />
           </div>
         </div>
       </section>

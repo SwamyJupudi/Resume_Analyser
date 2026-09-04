@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Button, Card, ErrorBanner, TextField } from "../components/ui/Primitives";
-
-
-
+import { AuthHeader } from "../components/auth/AuthHeader";
+import { AuthIllustration } from "../components/auth/AuthIllustration";
+import jobMatchRobot from "../assets/illustrations/job-match-robot.png";
 
 export default function RegisterPage() {
   const { register, login } = useAuth();
@@ -55,68 +55,56 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="auth-screen">
-      <div className="auth-card">
-        <div className="auth-mark">Resume Analyser</div>
-        <Link
-          to="/"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-            padding: "10px 16px",
-            marginBottom: "16px",
-            borderRadius: "8px",
-            backgroundColor: "#204B42",
-            color: "#ffffff",
-            textDecoration: "none",
-            fontSize: "14px",
-            fontWeight: "500",
-            cursor: "pointer",
-          }}
-        >
-          ← Back to Home
-        </Link>
-        <Card>
-          <h1>Create your account</h1>
-          <p className="auth-sub">Start matching your resume against real job descriptions.</p>
+    <div className="auth-page">
+      <AuthHeader />
+      <div className="auth-body">
+        <div className="auth-body-inner">
+          <div className="auth-form-col">
+            <div className="auth-card">
+              <Card>
+                <h1>Create your account</h1>
+                <p className="auth-sub">Start matching your resume against real job descriptions.</p>
 
-          <ErrorBanner>{error}</ErrorBanner>
+                <ErrorBanner>{error}</ErrorBanner>
 
-          <form onSubmit={handleSubmit} noValidate>
-            <TextField
-              id="name"
-              label="Name"
-              type="text"
-              autoComplete="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <TextField
-              id="email"
-              label="Email"
-              type="email"
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              id="password"
-              label="Password"
-              type="password"
-              autoComplete="new-password"
-              hint="At least 6 characters."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button type="submit" className="btn-block" loading={loading}>
-              Create account
-            </Button>
-          </form>
-        </Card>
-        <p className="auth-switch">
-          Already have an account? <Link to="/login">Sign in</Link>
-        </p>
+                <form onSubmit={handleSubmit} noValidate>
+                  <TextField
+                    id="name"
+                    label="Name"
+                    type="text"
+                    autoComplete="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <TextField
+                    id="email"
+                    label="Email"
+                    type="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <TextField
+                    id="password"
+                    label="Password"
+                    type="password"
+                    autoComplete="new-password"
+                    hint="At least 6 characters."
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <Button type="submit" className="btn-block" loading={loading}>
+                    Create account
+                  </Button>
+                </form>
+              </Card>
+              <p className="auth-switch">
+                Already have an account? <Link to="/login">Sign in</Link>
+              </p>
+            </div>
+          </div>
+          <AuthIllustration src={jobMatchRobot} />
+        </div>
       </div>
     </div>
   );

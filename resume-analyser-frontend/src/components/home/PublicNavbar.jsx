@@ -2,7 +2,27 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { Button } from "../ui/Primitives";
-import { IconMenu, IconX } from "./Icons";
+import { IconMenu, IconX  } from "./Icons";
+
+
+function LensIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m20 20-4.6-4.6" />
+    </svg>
+  );
+}
 
 export function PublicNavbar() {
   const { isAuthenticated } = useAuth();
@@ -12,7 +32,16 @@ export function PublicNavbar() {
     <header className="public-nav">
       <div className="public-nav-inner">
         <Link to="/" className="public-nav-mark" onClick={() => setOpen(false)}>
-          Resume Analyser
+          <span className="public-nav-brand">
+            <span className="auth-header-icon">
+              <LensIcon />
+            </span>
+            <span>FitLens</span>
+
+            <span className="public-nav-brand-tagline">
+              — An AI-Powered Resume Analyser
+            </span>
+          </span>
         </Link>
 
         <nav className="public-nav-links" aria-label="Primary">

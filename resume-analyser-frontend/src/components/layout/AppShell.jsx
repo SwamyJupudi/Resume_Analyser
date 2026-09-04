@@ -2,6 +2,25 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
+
+function LensIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m20 20-4.6-4.6" />
+    </svg>
+  );
+}
 const NAV_ITEMS = [
   { to: "/dashboard", label: "Dashboard" },
   { to: "/analyze", label: "New analysis" },
@@ -37,7 +56,12 @@ export function AppShell({ children }) {
       )}
 
       <aside className={`sidebar ${drawerOpen ? "open" : ""}`}>
-        <div className="sidebar-mark">Resume Analyser</div>
+        <div className="sidebar-mark">
+          <span className="auth-header-icon">
+            <LensIcon />
+          </span>
+          <span>FitLens</span>
+        </div>
         <nav className="sidebar-nav" aria-label="Main navigation">
           {NAV_ITEMS.map((item) => (
             <NavLink
