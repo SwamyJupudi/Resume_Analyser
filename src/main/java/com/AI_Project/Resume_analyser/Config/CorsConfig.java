@@ -20,7 +20,7 @@ public class CorsConfig {
                 List.of(
                         "http://localhost:5173",
                         "http://localhost:5174",
-                        "https://resume-analyser-kbhpspyb4-swamyjupudis-projects.vercel.app"
+                        "https://resume-analyser-kbhspsyb4-swamyjupudis-projects.vercel.app"
                 )
         );
 
