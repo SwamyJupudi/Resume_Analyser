@@ -68,7 +68,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOriginPatterns(List.of(
-                "https://*.vercel.app",
+                "https://resume-analyser-kbhpspyb4-swamyjupudis-projects.vercel.app",
                 "http://localhost:*"
         ));
 
